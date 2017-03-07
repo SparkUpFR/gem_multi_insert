@@ -5,7 +5,7 @@ module MultiInsert
   class Query
     def initialize(table, columns, values, opts = {})
       @table = table.to_sym
-      @sql_insert = ::MultiInsert::QueryBuilder.insert(table, columns, values, opts = {})
+      @sql_insert = ::MultiInsert::QueryBuilder.insert(table, columns, values, opts)
     end
 
     def returning(columns)

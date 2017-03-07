@@ -2,10 +2,14 @@ require 'active_record'
 
 module MultiInsert
   module QueryBuilder
+    INSERT_DEFAULTS = {
+      time: true
+    }
+
     def self.insert(table, columns, values, opts = {})
       ar = ActiveRecord::Base.connection
 
-      opts.merge!({time: true})
+      opts = INSERT_DEFAULTS.merge(opts)
 
       now = Time.now.to_s(:db) if opts[:time]
       table = ar.quote_table_name(table.to_s)
