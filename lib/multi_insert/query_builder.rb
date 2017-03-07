@@ -53,7 +53,8 @@ module MultiInsert
         now = Time.now.to_s(:db)
         values[:updated_at] = now
       end
-      values.map! do |key, value|
+      arr = []
+      values.each do |key, value|
         v = nil
         key = ActiveRecord::Base.connection.quote_column_name(key.to_s)
         if value == :excluded
@@ -61,9 +62,9 @@ module MultiInsert
         else
           v = ActiveRecord::Base.connection.quote(value)
         end
-        "#{key} = #{v}"
+        arr << "#{key} = #{v}"
       end
-      values = values.join(', ')
+      values = arr.join(', ')
       "#{on_conflict(column)} DO UPDATE SET #{values}"
     end
 
