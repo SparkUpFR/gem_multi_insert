@@ -36,7 +36,7 @@ module MultiInsert
         nil
       else
         if @returning_flat
-          result.rows.map{|r| r.first}
+          result.values.map{|r| r.first}
         else
           result
         end
