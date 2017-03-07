@@ -11,11 +11,13 @@ module MultiInsert
     def returning(columns)
       @sql_returning = ::MultiInsert::QueryBuilder.returning(columns)
       @returning_flat = false
+      self
     end
 
     def returning_id
       @sql_returning = ::MultiInsert::QueryBuilder.returning([:id])
       @returning_flat = true
+      self
     end
 
     def to_sql
