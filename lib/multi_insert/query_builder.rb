@@ -5,19 +5,18 @@ module MultiInsert
     def self.insert(table, columns, values, opts = {})
       ar = ActiveRecord::Base.connection
 
-      options = {time: true}
-      options.merge!(opts)
+      opts.merge!({time: true})
 
-      now = Time.now.to_s(:db) if options[:time]
+      now = Time.now.to_s(:db) if opts[:time]
       table = ar.quote_table_name(table.to_s)
 
       # Format columns
-      columns = columns + [:created_at, :updated_at] if options[:time]
+      columns = columns + [:created_at, :updated_at] if opts[:time]
       columns = columns.map!{|c| ar.quote_column_name(c.to_s)}
       columns = join_params(columns)
 
       # Format values
-      if options[:time]
+      if opts[:time]
         values = values.map{|v| v + [now, now]}
       end
       values = values.map{|v| join_params(v.map{|vv| ar.quote(vv.to_s)})}.join(',')
