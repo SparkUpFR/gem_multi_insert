@@ -3,9 +3,9 @@ require 'multi_insert/query_builder'
 
 module MultiInsert
   class Query
-    def initialize(table, columns, values)
+    def initialize(table, columns, values, opts = {})
       @table = table.to_sym
-      @sql_insert = ::MultiInsert::QueryBuilder.insert(table, columns, values)
+      @sql_insert = ::MultiInsert::QueryBuilder.insert(table, columns, values, opts = {})
     end
 
     def returning(columns)
