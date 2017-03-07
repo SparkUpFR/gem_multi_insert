@@ -45,8 +45,7 @@ module MultiInsert
     def self.on_conflict_do_update(column, values, opts = {})
       opts = INSERT_DEFAULTS.merge(opts)
       if values.is_a?(Symbol) || values.is_a?(String)
-        tmp = {}
-        tmp[values] = :excluded
+        values = { values => :excluded }
       elsif values.is_a?(Array)
         values = values.product([:excluded]).to_h
       end
@@ -56,7 +55,7 @@ module MultiInsert
       end
       values.map! do |key, value|
         v = nil
-        key = ActiveRecord::Base.connection.quote_column_name(key)
+        key = ActiveRecord::Base.connection.quote_column_name(key.to_s)
         if value == :excluded
           v = "excluded.#{key}"
         else
