@@ -33,6 +33,41 @@ module MultiInsert
       "RETURNING #{columns}"
     end
 
+    def self.on_conflict(column)
+      column = ActiveRecord::Base.connection.quote_column_name(column.to_s)
+      "ON CONFLICT (#{column})"
+    end
+
+    def self.on_conflict_do_nothing(column)
+      "#{on_conflict(column)} DO NOTHING"
+    end
+
+    def self.on_conflict_do_update(column, values, opts = {})
+      opts = INSERT_DEFAULTS.merge(opts)
+      if values.is_a?(Symbol) || values.is_a?(String)
+        tmp = {}
+        tmp[values] = :excluded
+      elsif values.is_a?(Array)
+        values = values.product([:excluded]).to_h
+      end
+      if opts[:time]
+        now = Time.now.to_s(:db)
+        values[:updated_at] = now
+      end
+      values.map! do |key, value|
+        v = nil
+        key = ActiveRecord::Base.connection.quote_column_name(key)
+        if value == :excluded
+          v = "excluded.#{key}"
+        else
+          v = ActiveRecord::Base.connection.quote(value)
+        end
+        "#{key} = #{v}"
+      end
+      values = values.join(', ')
+      "#{on_conflict(column)} DO UPDATE SET #{values}"
+    end
+
     def self.join_params(params)
       "(" + params.join(',') + ")"
     end

@@ -99,9 +99,53 @@
   
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Query/OnConflict.html" title="MultiInsert::Query::OnConflict (class)">OnConflict</a></span>
+    
+  
+</p>
 
 
 
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#opts-instance_method" title="#opts (instance method)">#<strong>opts</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute opts.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
@@ -158,6 +202,50 @@
     <span class="summary_desc"><div class='inline'>
 <p>A new instance of Query.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_conflict-instance_method" title="#on_conflict (instance method)">#<strong>on_conflict</strong>(column)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_conflict_sql-instance_method" title="#on_conflict_sql (instance method)">#<strong>on_conflict_sql</strong>(sql)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -282,16 +370,18 @@
       <pre class="lines">
 
 
-6
-7
-8
-9</pre>
+23
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@table</span> <span class='op'>=</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+  <span class='ivar'>@opts</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span>
   <span class='ivar'>@sql_insert</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="QueryBuilder.html" title="MultiInsert::QueryBuilder (module)">QueryBuilder</a></span></span><span class='period'>.</span><span class='id identifier rubyid_insert'><span class='object_link'><a href="QueryBuilder.html#insert-class_method" title="MultiInsert::QueryBuilder.insert (method)">insert</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -300,6 +390,54 @@
 </div>
   
 </div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="opts-instance_method">
+  
+    #<strong>opts</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute opts</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_opts'>opts</span>
+  <span class='ivar'>@opts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 
   <div id="instance_method_details" class="method_details_list">
@@ -321,21 +459,21 @@
       <pre class="lines">
 
 
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44</pre>
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_to_sql'>to_sql</span><span class='rparen'>)</span>
@@ -348,6 +486,68 @@
       <span class='id identifier rubyid_result'>result</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_conflict-instance_method">
+  
+    #<strong>on_conflict</strong>(column)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_conflict'>on_conflict</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
+  <span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="MultiInsert::Query (class)">Query</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Query/OnConflict.html" title="MultiInsert::Query::OnConflict (class)">OnConflict</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Query/OnConflict.html#initialize-instance_method" title="MultiInsert::Query::OnConflict#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_conflict_sql-instance_method">
+  
+    #<strong>on_conflict_sql</strong>(sql)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_conflict_sql'>on_conflict_sql</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='rparen'>)</span>
+  <span class='ivar'>@sql_on_conflict</span> <span class='op'>=</span> <span class='id identifier rubyid_sql'>sql</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -369,14 +569,14 @@
       <pre class="lines">
 
 
-11
-12
-13
-14
-15</pre>
+29
+30
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_returning'>returning</span><span class='lparen'>(</span><span class='id identifier rubyid_columns'>columns</span><span class='rparen'>)</span>
   <span class='ivar'>@sql_returning</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="QueryBuilder.html" title="MultiInsert::QueryBuilder (module)">QueryBuilder</a></span></span><span class='period'>.</span><span class='id identifier rubyid_returning'><span class='object_link'><a href="QueryBuilder.html#returning-class_method" title="MultiInsert::QueryBuilder.returning (method)">returning</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_columns'>columns</span><span class='rparen'>)</span>
@@ -403,14 +603,14 @@
       <pre class="lines">
 
 
-17
-18
-19
-20
-21</pre>
+35
+36
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_returning_id'>returning_id</span>
   <span class='ivar'>@sql_returning</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="QueryBuilder.html" title="MultiInsert::QueryBuilder (module)">QueryBuilder</a></span></span><span class='period'>.</span><span class='id identifier rubyid_returning'><span class='object_link'><a href="QueryBuilder.html#returning-class_method" title="MultiInsert::QueryBuilder.returning (method)">returning</a></span></span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -437,12 +637,12 @@
       <pre class="lines">
 
 
-29
-30
-31</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_to_sql'>to_sql</span>
@@ -467,19 +667,15 @@
       <pre class="lines">
 
 
-23
-24
-25
-26
-27</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_sql'>to_sql</span>
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='ivar'>@sql_insert</span>
-  <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sql'>sql</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='ivar'>@sql_returning</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='ivar'>@sql_returning</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-  <span class='id identifier rubyid_sql'>sql</span>
+  <span class='lbracket'>[</span><span class='ivar'>@sql_insert</span><span class='comma'>,</span> <span class='ivar'>@sql_on_conflict</span><span class='comma'>,</span> <span class='ivar'>@sql_returning</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:nil?</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -491,7 +687,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  7 13:25:32 2017 by
+  Generated on Tue Mar  7 14:23:54 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>
