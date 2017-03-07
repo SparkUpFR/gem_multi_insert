@@ -99,7 +99,21 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A conflict close inside a query.</p>
 
+<p>You never need to instanciate it yourself. Instead, use
+`Query#on_conflict`.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -117,7 +131,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#do_nothing-instance_method" title="#do_nothing (instance method)">#<strong>do_nothing</strong>  &#x21d2; Object </a>
+      <a href="#do_nothing-instance_method" title="#do_nothing (instance method)">#<strong>do_nothing</strong>  &#x21d2; Query </a>
     
 
     
@@ -131,7 +145,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Ignore conflicting rows.</p>
+</div></span>
   
 </li>
 
@@ -139,7 +155,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#do_update-instance_method" title="#do_update (instance method)">#<strong>do_update</strong>(values)  &#x21d2; Object </a>
+      <a href="#do_update-instance_method" title="#do_update (instance method)">#<strong>do_update</strong>(values)  &#x21d2; Query </a>
     
 
     
@@ -153,7 +169,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Update the conflicting rows according to user-supplied rules.</p>
+</div></span>
   
 </li>
 
@@ -178,7 +196,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of OnConflict.</p>
+<p>Create an ON CONFLICT clause.</p>
 </div></span>
   
 </li>
@@ -202,13 +220,49 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of OnConflict</p>
+<p>Create an ON CONFLICT clause</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>query</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Query.html" title="MultiInsert::Query (class)">Query</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the query.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>column</span>
+      
+      
+        <span class='type'>(<tt>String | Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the column to watch for conflicts.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -216,13 +270,13 @@
       <pre class="lines">
 
 
-7
-8
-9
-10</pre>
+18
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_query'>query</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='ivar'>@query</span> <span class='op'>=</span> <span class='id identifier rubyid_query'>query</span>
@@ -243,24 +297,53 @@
       <div class="method_details first">
   <h3 class="signature first" id="do_nothing-instance_method">
   
-    #<strong>do_nothing</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>do_nothing</strong>  &#x21d2; <tt><span class='object_link'><a href="../Query.html" title="MultiInsert::Query (class)">Query</a></span></tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Ignore conflicting rows.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Query.html" title="MultiInsert::Query (class)">Query</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the original query.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
-14</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_do_nothing'>do_nothing</span>
   <span class='ivar'>@query</span><span class='period'>.</span><span class='id identifier rubyid_on_conflict_sql'>on_conflict_sql</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../QueryBuilder.html" title="MultiInsert::QueryBuilder (module)">QueryBuilder</a></span></span><span class='period'>.</span><span class='id identifier rubyid_on_conflict_do_nothing'><span class='object_link'><a href="../QueryBuilder.html#on_conflict_do_nothing-class_method" title="MultiInsert::QueryBuilder.on_conflict_do_nothing (method)">on_conflict_do_nothing</a></span></span><span class='lparen'>(</span><span class='ivar'>@column</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -273,24 +356,88 @@
       <div class="method_details ">
   <h3 class="signature " id="do_update-instance_method">
   
-    #<strong>do_update</strong>(values)  &#x21d2; <tt>Object</tt> 
+    #<strong>do_update</strong>(values)  &#x21d2; <tt><span class='object_link'><a href="../Query.html" title="MultiInsert::Query (class)">Query</a></span></tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Update the conflicting rows according to user-supplied rules.</p>
+
+<p>The rules can be:</p>
+<ul><li>
+<p>A single symbol or string denoting a column name. In this case, the
+matching column will be updated.</p>
+</li><li>
+<p>An array of strings or symbols. In this case, the matching columns will be
+updated.</p>
+</li><li>
+<p>An hash of values (Integers or Strings) or the symbol `:excluded`. The
+matching columns will be updated</p>
+</li></ul>
+
+<p>to the supplied values, except when the value is `:excluded`. In that case,
+the matching columns will be set to the value to be inserted.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt>String | Symbol | Array&lt;String | Symbol&gt; | Hash&lt;String | Symbol =&gt; String | Number | Boolean&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The user specified rules.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Query.html" title="MultiInsert::Query (class)">Query</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The original query.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-16
-17
-18</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_do_update'>do_update</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
   <span class='ivar'>@query</span><span class='period'>.</span><span class='id identifier rubyid_on_conflict_sql'>on_conflict_sql</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../QueryBuilder.html" title="MultiInsert::QueryBuilder (module)">QueryBuilder</a></span></span><span class='period'>.</span><span class='id identifier rubyid_on_conflict_do_update'><span class='object_link'><a href="../QueryBuilder.html#on_conflict_do_update-class_method" title="MultiInsert::QueryBuilder.on_conflict_do_update (method)">on_conflict_do_update</a></span></span><span class='lparen'>(</span><span class='ivar'>@column</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='ivar'>@query</span><span class='period'>.</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -305,7 +452,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  7 16:20:16 2017 by
+  Generated on Tue Mar  7 18:44:22 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

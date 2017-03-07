@@ -117,7 +117,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#multi_insert-class_method" title="multi_insert (class method)">.<strong>multi_insert</strong>(columns, values, opts = {})  &#x21d2; Object </a>
+      <a href="#multi_insert-class_method" title="multi_insert (class method)">.<strong>multi_insert</strong>(columns, values, opts = {})  &#x21d2; Query </a>
     
 
     
@@ -131,7 +131,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Start a multi insert.</p>
+</div></span>
   
 </li>
 
@@ -148,24 +150,109 @@
       <div class="method_details first">
   <h3 class="signature first" id="multi_insert-class_method">
   
-    .<strong>multi_insert</strong>(columns, values, opts = {})  &#x21d2; <tt>Object</tt> 
+    .<strong>multi_insert</strong>(columns, values, opts = {})  &#x21d2; <tt>Query</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Start a multi insert.</p>
+
+<p>See `Query#new` for a list of options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>columns</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Symbol | String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The columns to use for insertion.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Array&lt;String | Number | Boolean | nil&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Values to be inserted.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt>Hash&lt;Object&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Query</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A query object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-5
-6
-7</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/multi_insert/hooks/active_record.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/multi_insert/hooks/active_record.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_multi_insert'>multi_insert</span><span class='lparen'>(</span><span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert/Query.html" title="MultiInsert::Query (class)">Query</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../MultiInsert/Query.html#initialize-instance_method" title="MultiInsert::Query#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_table_name'>table_name</span><span class='comma'>,</span> <span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
@@ -180,7 +267,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Mar  7 16:20:16 2017 by
+  Generated on Tue Mar  7 18:44:22 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>
