@@ -1,0 +1,44 @@
+require 'active_record'
+require 'multi_insert/query_builder'
+
+module MultiInsert
+  class Query
+    def initialize(table, columns, values)
+      @table = table.to_sym
+      @sql_insert = ::MultiInsert::QueryBuilder.insert(table, columns, values)
+    end
+
+    def returning(columns)
+      @sql_returning = ::MultiInsert::QueryBuilder.returning(columns)
+      @returning_flat = false
+    end
+
+    def returning_id
+      @sql_returning = ::MultiInsert::QueryBuilder.returning([:id])
+      @returning_flat = true
+    end
+
+    def to_sql
+      sql = @sql_insert
+      sql = "#{sql} #{@sql_returning}" unless @sql_returning.nil?
+      sql
+    end
+
+    def to_s
+      to_sql
+    end
+
+    def execute
+      result = ActiveRecord::Base.connection.execute(to_sql)
+      if @sql_returning.nil?
+        nil
+      else
+        if @returning_flat
+          result.rows.map{|r| r.first}
+        else
+          result
+        end
+      end
+    end
+  end
+end
