@@ -14,13 +14,13 @@ module MultiInsert
       # Format columns
       columns = columns + [:created_at, :updated_at] if options[:time]
       columns = columns.map!{|c| ar.quote_column_name(c.to_s)}
-      columns = join_params(columns)
+      columns = self.join_params(columns)
 
       # Format values
       if options[:time]
         values = values.map{|v| v + [now, now]}
       end
-      values = values.map{|v| join_params(v.map{|vv| ar.quote(vv.to_s)})}.join(',')
+      values = values.map{|v| self.join_params(v.map{|vv| ar.quote(vv.to_s)})}.join(',')
 
       "INSERT INTO #{table} #{columns} VALUES #{values}"
     end
