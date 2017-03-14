@@ -23,7 +23,7 @@ module MultiInsert
       if opts[:time]
         values = values.map{|v| v + [now, now]}
       end
-      values = values.map{|v| join_params(v.map{|vv| ar.quote(vv.to_s)})}.join(',')
+      values = values.map{|v| join_params(v.map{|vv| ar.quote(vv)})}.join(',')
 
       "INSERT INTO #{table} #{columns} VALUES #{values}"
     end
