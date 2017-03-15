@@ -34,8 +34,12 @@ module MultiInsert
     end
 
     def self.on_conflict(column)
-      column = ActiveRecord::Base.connection.quote_column_name(column.to_s)
-      "ON CONFLICT (#{column})"
+      if column.nil?
+        "ON CONFLICT"
+      else
+        column = ActiveRecord::Base.connection.quote_column_name(column.to_s)
+        "ON CONFLICT (#{column})"
+      end
     end
 
     def self.on_conflict_do_nothing(column)

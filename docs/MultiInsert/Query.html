@@ -225,7 +225,7 @@ specified values.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#on_conflict-instance_method" title="#on_conflict (instance method)">#<strong>on_conflict</strong>(column)  &#x21d2; Query::OnConflict </a>
+      <a href="#on_conflict-instance_method" title="#on_conflict (instance method)">#<strong>on_conflict</strong>(column = nil)  &#x21d2; Query::OnConflict </a>
     
 
     
@@ -630,7 +630,7 @@ specified values. The following options are supported:</p>
       <div class="method_details ">
   <h3 class="signature " id="on_conflict-instance_method">
   
-    #<strong>on_conflict</strong>(column)  &#x21d2; <tt><span class='object_link'><a href="Query/OnConflict.html" title="MultiInsert::Query::OnConflict (class)">Query::OnConflict</a></span></tt> 
+    #<strong>on_conflict</strong>(column = nil)  &#x21d2; <tt><span class='object_link'><a href="Query/OnConflict.html" title="MultiInsert::Query::OnConflict (class)">Query::OnConflict</a></span></tt> 
   
 
   
@@ -655,6 +655,8 @@ specified values. The following options are supported:</p>
       
         <span class='type'>(<tt>String | Symbol</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
@@ -698,7 +700,7 @@ specified values. The following options are supported:</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 86</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_on_conflict'>on_conflict</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_on_conflict'>on_conflict</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='op'>::</span><span class='const'><span class='object_link'><a href="../MultiInsert.html" title="MultiInsert (module)">MultiInsert</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="MultiInsert::Query (class)">Query</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Query/OnConflict.html" title="MultiInsert::Query::OnConflict (class)">OnConflict</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Query/OnConflict.html#initialize-instance_method" title="MultiInsert::Query::OnConflict#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1060,7 +1062,7 @@ specified values. The following options are supported:</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Mar 14 14:41:45 2017 by
+  Generated on Wed Mar 15 12:12:45 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

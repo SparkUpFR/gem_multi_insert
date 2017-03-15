@@ -250,7 +250,7 @@
         <span class='name'>column</span>
       
       
-        <span class='type'>(<tt>String | Symbol</tt>)</span>
+        <span class='type'>(<tt>String | Symbol | nil</tt>)</span>
       
       
       
@@ -280,7 +280,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_query'>query</span><span class='comma'>,</span> <span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='ivar'>@query</span> <span class='op'>=</span> <span class='id identifier rubyid_query'>query</span>
-  <span class='ivar'>@column</span> <span class='op'>=</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+  <span class='ivar'>@column</span> <span class='op'>=</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -452,7 +452,7 @@ the matching columns will be set to the value to be inserted.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Mar 14 14:41:45 2017 by
+  Generated on Wed Mar 15 12:12:45 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

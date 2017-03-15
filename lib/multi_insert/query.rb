@@ -14,10 +14,10 @@ module MultiInsert
       # Create an ON CONFLICT clause
       #
       # @param query [Query] the query.
-      # @param column [String | Symbol] the column to watch for conflicts.
+      # @param column [String | Symbol | nil] the column to watch for conflicts.
       def initialize(query, column)
         @query = query
-        @column = column.to_sym
+        @column = column.nil? ? nil : column.to_sym
       end
 
       # Ignore conflicting rows.
@@ -83,7 +83,7 @@ module MultiInsert
     #
     # @param column [String | Symbol] The column to watch for conflicts.
     # @return [Query::OnConflict] A conflict clause.
-    def on_conflict(column)
+    def on_conflict(column = nil)
       ::MultiInsert::Query::OnConflict.new(self, column)
     end
 
