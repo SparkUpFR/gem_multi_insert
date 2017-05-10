@@ -37,8 +37,9 @@ module MultiInsert
       if column.nil?
         "ON CONFLICT"
       else
-        column = ActiveRecord::Base.connection.quote_column_name(column.to_s)
-        "ON CONFLICT (#{column})"
+        column = [column] unless column.kind_of?(Array)
+        columns = column.map{|c| ActiveRecord::Base.connection.quote_column_name(c.to_s)}.join(',')
+        "ON CONFLICT (#{columns})"
       end
     end
 
