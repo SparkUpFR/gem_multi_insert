@@ -17,7 +17,7 @@ module MultiInsert
       # @param column [String | Symbol | nil] the column to watch for conflicts.
       def initialize(query, column)
         @query = query
-        @column = column.nil? ? nil : column.to_sym
+        @column = column
       end
 
       # Ignore conflicting rows.
