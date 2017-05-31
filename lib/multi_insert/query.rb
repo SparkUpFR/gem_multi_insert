@@ -120,6 +120,7 @@ module MultiInsert
     #
     # @return [nil | Array<Integer> | Array<Array<String | Number | Boolean>>]
     def execute
+      result = nil
       ActiveRecord::Base.connection_pool.with_connection do |con|
         result = con.execute(to_sql)
       end
