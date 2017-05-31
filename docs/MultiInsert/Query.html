@@ -6,7 +6,7 @@
 <title>
   Class: MultiInsert::Query
   
-    &mdash; Documentation by YARD 0.9.8
+    &mdash; Documentation by YARD 0.9.9
   
 </title>
 
@@ -605,13 +605,17 @@ specified values. The following options are supported:</p>
 130
 131
 132
-133</pre>
+133
+134
+135</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/multi_insert/query.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
-  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_to_sql'>to_sql</span><span class='rparen'>)</span>
+  <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_connection_pool'>connection_pool</span><span class='period'>.</span><span class='id identifier rubyid_with_connection'>with_connection</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_con'>con</span><span class='op'>|</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_con'>con</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_to_sql'>to_sql</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='ivar'>@sql_returning</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='kw'>nil</span>
   <span class='kw'>else</span>
@@ -1062,9 +1066,9 @@ specified values. The following options are supported:</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Mar 15 12:12:45 2017 by
+  Generated on Wed May 31 11:20:43 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.0).
+  0.9.9 (ruby-2.4.1).
 </div>
 
     </div>
